@@ -1,5 +1,5 @@
 {
-    "name": "gamespecu/laravel-trackable-jobs",
+    "name": "mateusjunges/laravel-trackable-jobs",
     "description": "This package allows you to track your jobs",
     "type": "library",
     "license": "MIT",
