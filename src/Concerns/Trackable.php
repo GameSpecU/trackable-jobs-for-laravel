@@ -9,9 +9,15 @@ use Throwable;
 
 trait Trackable
 {
-    public ?Model $model;
+    /**
+     * @var Model|null
+     */
+    public $model;
 
-    public TrackedJob $trackedJob;
+    /**
+     * @var TrackedJob|Model
+     */
+    public $trackedJob;
 
     public function __construct($model)
     {
@@ -29,7 +35,7 @@ trait Trackable
         return [new TrackedJobMiddleware()];
     }
 
-    public function failed(Throwable $exception)
+    public function failed(Throwable $exception): void
     {
         $message = $exception->getMessage();
 

@@ -8,6 +8,10 @@ use Junges\TrackableJobs\Models\TrackedJob;
 use Junges\TrackableJobs\Tests\Jobs\TestJob;
 use Spatie\TestTime\TestTime;
 
+/**
+ * @requires PHP > 9
+ */
+
 class TrackedJobUsingUuidTest extends TestCase
 {
     use RefreshDatabase;

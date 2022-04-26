@@ -1,5 +1,5 @@
 {
-    "name": "mateusjunges/laravel-trackable-jobs",
+    "name": "gamespecu/laravel-trackable-jobs",
     "description": "This package allows you to track your jobs",
     "type": "library",
     "license": "MIT",
@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": "^7.4||^8.0",
+        "php": "^7.3||^8.0",
         "illuminate/support": "^8.0",
         "illuminate/queue": "^8.0",
         "illuminate/database": "^8.0"

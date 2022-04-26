@@ -6,7 +6,7 @@ use Throwable;
 
 class TrackedJobMiddleware
 {
-    public function handle($job, $next)
+    public function handle($job, $next): void
     {
         $job->trackedJob->markAsStarted();
 

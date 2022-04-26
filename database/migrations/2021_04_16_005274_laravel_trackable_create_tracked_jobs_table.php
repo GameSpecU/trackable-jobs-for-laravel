@@ -6,8 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 class LaravelTrackableCreateTrackedJobsTable extends Migration
 {
-    private string $table_name = '';
-    private bool $usingUuid = false;
+    /**
+     * @var string
+     */
+    private $table_name = '';
+    /**
+     * @var bool
+     */
+    private $usingUuid = false;
 
     public function __construct()
     {

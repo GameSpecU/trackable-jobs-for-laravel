@@ -2,6 +2,7 @@
 
 namespace Junges\TrackableJobs\Models;
 
+use Carbon\Carbon;
 use Database\Factories\TrackedJobFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -9,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Junges\TrackableJobs\Concerns\HasUuid;
 use Junges\TrackableJobs\Contracts\TrackableJobContract;
 
 /**
@@ -22,14 +22,13 @@ use Junges\TrackableJobs\Contracts\TrackableJobContract;
  * @property string name
  * @property string status
  * @property string|null output
- * @property \Carbon\Carbon|null started_at
- * @property \Carbon\Carbon|null finished_at
+ * @property Carbon|null started_at
+ * @property Carbon|null finished_at
  * @mixin Builder
  */
 class TrackedJob extends Model implements TrackableJobContract
 {
     use HasFactory;
-    use HasUuid;
     use Prunable;
 
     const STATUS_QUEUED = 'queued';
@@ -45,10 +44,7 @@ class TrackedJob extends Model implements TrackableJobContract
     ];
 
     protected $table = '';
-    protected $keyType = 'int';
-
     protected $fillable = [
-        'uuid',
         'trackable_id',
         'trackable_type',
         'name',
@@ -67,12 +63,6 @@ class TrackedJob extends Model implements TrackableJobContract
     {
         parent::__construct($attributes);
         $this->setTable(config('trackable-jobs.tables.tracked_jobs', 'tracked_jobs'));
-
-        if (config('trackable-jobs.using_uuid', false)) {
-            $this->setKeyType('string');
-            $this->primaryKey = 'uuid';
-            $this->setIncrementing(false);
-        }
     }
 
     public function prunable()

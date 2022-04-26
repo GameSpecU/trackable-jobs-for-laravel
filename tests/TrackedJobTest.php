@@ -77,6 +77,10 @@ class TrackedJobTest extends TestCase
         $this->assertSame('1h', TrackedJob::first()->duration);
     }
 
+    /**
+     * @requires PHP > 9
+     * @return void
+     */
     public function test_it_throws_exception_if_finding_by_uuid()
     {
         $this->expectException(UuidNotConfiguredException::class);
